@@ -1,6 +1,7 @@
 
 let points = []
 let ruler = 0;
+let grid = 0;
 const canvas_size = 800;
 const pointRadius = 8;
 
@@ -41,9 +42,7 @@ function draw()
                 ctx.arc(erase.x,erase.y,pointRadius + 0.5,0,toRadians(360));
                 ctx.fill();
                 if (points.length <= 1) {document.getElementById("result").textContent = "r = ";}
-                if (ruler === 1) {ruler_45();}
-                if (ruler === 2) {ruler_135();}
-
+                all_redraw();
                 console.log("===============");
                 console.log("erase",erase);
 
@@ -142,8 +141,7 @@ function clear()
     ctx.fillStyle = "#edf3f7";
     ctx.fillRect(0,0,canvas_size,canvas_size);
 
-    if (ruler === 1) {ruler_45();}
-    if (ruler === 2) {ruler_135();}
+    all_redraw();
 
     console.log("clear",points);
 }
@@ -165,74 +163,92 @@ function points_redraw()
 function ruler_clear()
 {
     ruler = 0;
-    const canvas = document.getElementById("graph");
-    const ctx = canvas.getContext("2d");
-
-    //キャンバスリセット
-    ctx.fillStyle = "#edf3f7";
-    ctx.fillRect(0,0,canvas_size,canvas_size);
-    //点再描画
-    points_redraw();
+    all_redraw();
 }
 
 function ruler_45()
 {
     ruler = 1;
-    const canvas = document.getElementById("graph");
-    const ctx = canvas.getContext("2d");
-
-    //キャンバスリセット
-    ctx.fillStyle = "#edf3f7";
-    ctx.fillRect(0,0,canvas_size,canvas_size);
-    //線
-    ctx.beginPath();
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = '#a8b4bd';
-    ctx.moveTo(canvas_size, 0);
-    ctx.lineTo(0, canvas_size);
-    ctx.stroke();
-    //点再描画
-    if (points.length >= 1)
-    {
-        points_redraw();
-    }
+    all_redraw();
 }
 
 function ruler_135()
 {
     ruler = 2;
+    all_redraw();
+}
+
+function grid_on()
+{
+    grid = 1;
+    all_redraw();
+}
+
+function grid_clear()
+{
+    grid = 0;
+    all_redraw();
+}
+
+function all_redraw()
+{
     const canvas = document.getElementById("graph");
     const ctx = canvas.getContext("2d");
-
     //キャンバスリセット
     ctx.fillStyle = "#edf3f7";
     ctx.fillRect(0,0,canvas_size,canvas_size);
-    //線
-    ctx.beginPath();
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = '#a8b4bd';
-    ctx.moveTo(0, 0);
-    ctx.lineTo(canvas_size, canvas_size);
-    ctx.stroke();
-    //点再描画
-    if (points.length >= 1)
+
+    //グリッド
+    if (grid === 1)
     {
-        points_redraw();
+        //線
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#dae1e6';
+        for (let draw_grid_x = 1; draw_grid_x < 10; draw_grid_x++)
+        {
+            ctx.moveTo(draw_grid_x * (canvas_size / 10) + 0.5, 0);
+            ctx.lineTo(draw_grid_x * (canvas_size / 10) + 0.5, canvas_size);
+        }
+        for (let draw_grid_y = 1; draw_grid_y < 10; draw_grid_y++)
+        {
+            ctx.moveTo(0, draw_grid_y * (canvas_size / 10) + 0.5);
+            ctx.lineTo(canvas_size, draw_grid_y * (canvas_size / 10) + 0.5);
+        }
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = '#dae1e6';
+        ctx.moveTo((canvas_size / 2), 0);
+        ctx.lineTo((canvas_size / 2), canvas_size);
+        ctx.moveTo(0, (canvas_size / 2));
+        ctx.lineTo(canvas_size, (canvas_size / 2));
+        ctx.stroke();
     }
+
+    //定規
+    if (ruler === 1)
+    {
+        //線
+        ctx.beginPath();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#a8b4bd';
+        ctx.moveTo(canvas_size, 0);
+        ctx.lineTo(0, canvas_size);
+        ctx.stroke();
+    }
+    else if (ruler === 2)
+    {
+        //線
+        ctx.beginPath();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#a8b4bd';
+        ctx.moveTo(0, 0);
+        ctx.lineTo(canvas_size, canvas_size);
+        ctx.stroke();
+    }
+
+    //点再描画
+    if (points.length >= 1) {points_redraw();}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
