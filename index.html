@@ -13,7 +13,7 @@
             <div class="graph">
                 <div class="text_left">
                     <p style="margin-top: 0;"><font size="5">1000</font></p>
-                    <p style="padding: 360px 15px 355px 0;"><font size="7">Y</font></p>
+                    <p style="padding: 335px 15px 380px 0;"><font size="7">Y</font></p>
                     <p style="margin-bottom: 0; padding: 0 15px 0 0;"><font size="5">0</font></p>
                 </div>
                 <div class="canvas">
@@ -21,7 +21,7 @@
                         <canvas  id="graph" width="800" height="800"></canvas>
                     </div>
                     <div class="text_down">
-                        <p style="padding: 0 0 0 380px;"><font size="7">X</font></p>
+                        <p style="padding: 0 0 0 395px;"><font size="7">X</font></p>
                         <p style="padding: 20px 0 0 0;"><font size="5">1000</font></p>
                     </div>
                 </div>
@@ -35,17 +35,19 @@
                 <hr>
                 <div class="buttons">
                     <button class="clear_button" type="button" onclick="window.clear();"><font size="5">Clear</font></button>
-                    <p class="ruler_menu"><font size="5">定規</font></p>
+                    <p class="label"><font size="5">定規</font></p>
                     <div class="rulers">
-                        <button class="ruler_button" type="button" onclick="window.ruler_clear()" style="border-width: 0 4px 4px 4px; border-radius: 0 0 0 10px;"><font size="5">なし</font></button>
+                        <button class="ruler_button" type="button" onclick="window.ruler_clear();" style="border-width: 0 4px 4px 4px; border-radius: 0 0 0 10px;"><font size="5">オフ</font></button>
                         <button class="ruler_button" type="button" onclick="window.ruler_45();" style="border-width: 0 0 4px 0; border-radius: 0;"><font size="5">1</font></button>
                         <button class="ruler_button" type="button" onclick="window.ruler_135();" style="border-width: 0 4px 4px 4px; border-radius: 0 0 10px 0;"><font size="5">-1</font></button>
+                    </div>
+                    <p class="label"><font size="5">グリッド</font></p>
+                    <div class="grid">
+                        <button class="grid_button" type="button" onclick="window.grid_clear();" style="border-width: 0 2px 4px 4px; border-radius: 0 0 0 10px;"><font size="5">オフ</font></button>
+                        <button class="grid_button" type="button" onclick="window.grid_on();" style="border-width: 0 4px 4px 2px; border-radius: 0 0 10px 0;"><font size="5">オン</font></button>
                     </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
-
-
-
