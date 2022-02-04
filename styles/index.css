@@ -75,10 +75,9 @@ body
 .inspector
 {
     display:flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: column;
     width: 450px;
-    justify-content: center;
     margin: 10px 0;
     background-color: #fdffff;
     border-style: solid;
@@ -102,14 +101,17 @@ body
 
 .buttons
 {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
     width: 328px;
-    margin: 180px auto 80px;
+    margin: 100px auto 60px;
 }
 
 .clear_button
 {
     display: inline-block;
-    margin: 10px auto;
+    margin: 0 auto;
     width: 328px;
     background-color: #edf3f7;
     border-style: solid;
@@ -134,18 +136,17 @@ hr
     border: none;
 }
 
-.ruler_menu
+.label
 {
     text-align: center;
     width: 320px;
-    margin: 10px auto 0;
+    margin: 20px auto 0;
     background-color: #edf3f7;
     border-style: solid;
     border-width: 4px;
     border-radius: 10px 10px 0 0;
     border-color: #dae1e6;
 }
-
 
 .rulers
 {
@@ -166,8 +167,33 @@ hr
     cursor: pointer;
     transition: all 0.1s;
 }
-
 .ruler_button:hover
+{
+    background-color: #fdffff;
+    border-color: #e1e7eb;
+}
+
+
+.grid
+{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.grid_button
+{
+    display: inline-block;
+    margin: 0 auto;
+    width: 170px;
+    background-color: #edf3f7;
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 10px;
+    border-color: #dae1e6;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.grid_button:hover
 {
     background-color: #fdffff;
     border-color: #e1e7eb;
